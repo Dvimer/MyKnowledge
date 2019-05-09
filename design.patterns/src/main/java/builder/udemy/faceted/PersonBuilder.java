@@ -1,6 +1,6 @@
-package builder.faceted;
+package builder.udemy.faceted;
 
-import builder.Person;
+import builder.udemy.Person;
 
 public class PersonBuilder {
     protected Person person = new Person();

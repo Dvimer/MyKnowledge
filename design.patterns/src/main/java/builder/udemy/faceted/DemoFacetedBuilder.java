@@ -1,6 +1,6 @@
-package builder.faceted;
+package builder.udemy.faceted;
 
-import builder.Person;
+import builder.udemy.Person;
 
 public class DemoFacetedBuilder {
     public static void main(String[] args) {

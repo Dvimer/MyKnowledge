@@ -1,4 +1,4 @@
-package builder;
+package builder.udemy;
 
 public class Person {
     private String name;

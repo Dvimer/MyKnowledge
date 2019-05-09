@@ -1,6 +1,6 @@
-package builder.faceted;
+package builder.udemy.faceted;
 
-import builder.Person;
+import builder.udemy.Person;
 
 public class PersonAdressBuilder extends PersonBuilder {
     public PersonAdressBuilder(Person person) {

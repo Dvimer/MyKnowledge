@@ -1,4 +1,4 @@
-package builder;
+package builder.udemy;
 
 class PersonBuilder<SELF extends PersonBuilder<SELF>> {
     protected Person person = new Person();
