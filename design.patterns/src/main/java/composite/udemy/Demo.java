@@ -1,4 +1,4 @@
-package composite;
+package composite.udemy;
 
 public class Demo {
     public static void main(String[] args) {
@@ -13,9 +13,9 @@ public class Demo {
         drawing.children.add(group);
 
         GraphicObject group2 = new GraphicObject();
-        group.children.add(new Circle("Blue"));
-        group.children.add(new Square("Blue"));
-        group.children.add(group2);
+        group2.children.add(new Circle("Blue"));
+        group2.children.add(new Square("Blue"));
+        group.children.get(0).children.add(group2);
 
         System.out.println(drawing);
 

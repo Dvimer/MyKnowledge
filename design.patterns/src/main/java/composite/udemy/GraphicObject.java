@@ -1,4 +1,4 @@
-package composite;
+package composite.udemy;
 
 import java.util.ArrayList;
 import java.util.Collections;

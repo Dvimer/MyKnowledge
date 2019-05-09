@@ -1,4 +1,4 @@
-package composite;
+package composite.udemy;
 
 public class Square extends GraphicObject {
 
