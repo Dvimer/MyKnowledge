@@ -1,4 +1,4 @@
-package lesson2;
+package geekbarins.lesson2;
 
 import java.util.function.Consumer;
 

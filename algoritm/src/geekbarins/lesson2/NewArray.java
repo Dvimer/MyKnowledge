@@ -1,4 +1,4 @@
-package lesson2;
+package geekbarins.lesson2;
 
 public class NewArray {
     private int lenght = 0;
