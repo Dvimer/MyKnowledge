@@ -1,3 +1,5 @@
+package lesson2;
+
 import java.util.function.Consumer;
 
 public class MainLesson2 {
