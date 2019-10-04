@@ -1,5 +1,3 @@
-package lesson2;
-
 public class NewArray {
     private int lenght = 0;
     private int[] array;
