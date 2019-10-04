@@ -1,0 +1,12 @@
+/.idea/compiler.xml
+/design.patterns/design.patterns.iml
+/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml
+/.idea/libraries/Maven__com_google_code_findbugs_annotations_2_0_1.xml
+/.idea/libraries/Maven__com_google_guava_guava_15_0.xml
+/.idea/libraries/Maven__com_google_inject_guice_3_0.xml
+/.idea/libraries/Maven__javax_inject_javax_inject_1.xml
+/.idea/libraries/Maven__junit_junit_4_12.xml
+/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_8_1.xml
+/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml
+/.idea/libraries/Maven__org_javassist_javassist_3_19_0_GA.xml
+/.idea/libraries/Maven__org_reflections_reflections_0_9_10.xml
