@@ -1,17 +1,17 @@
 package com.dvimer.payments.domain;
 
-import com.dvimer.payments.entity.Account;
-
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 public class TransactionMoney {
-    @NotNull
+    @NotNull(message = "Be sure to indicate the account from which to write off")
     private Long from;
-    @NotNull
+    @NotNull(message = "Be sure to indicate the account where to credit")
     private Long to;
-    @NotNull
+    @Min(value = 0, message = "Min amount need more 0")
+    @NotNull(message = "amount need set")
     private BigDecimal amount;
 
     public TransactionMoney() {

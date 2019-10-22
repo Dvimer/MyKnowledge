@@ -7,15 +7,14 @@ import com.dvimer.payments.exception.AccountLessMoneyException;
 import com.dvimer.payments.exception.AccountNotFoundException;
 import com.dvimer.payments.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.List;
 
 @RestController
-@Validated
 @RequestMapping("/account")
 public class AccountController {
 
@@ -35,26 +34,26 @@ public class AccountController {
     }
 
     @PostMapping
-    public void save(@RequestBody Account account) {
+    public void save(@Valid @RequestBody Account account) {
         accountService.save(account);
     }
 
     @PutMapping("/put")
-    public void putMoney(@RequestBody AccountInfo accountInfo) {
+    public void putMoney(@Valid @RequestBody AccountInfo accountInfo) {
         Account currentAccount = accountService.findByNumber(accountInfo.getNumber()).orElseThrow(AccountNotFoundException::new);
         currentAccount.setAmount(currentAccount.getAmount().add(accountInfo.getAmount()));
         accountService.save(currentAccount);
     }
 
     @PutMapping("/withdraw")
-    public void withdrawMoney(@RequestBody AccountInfo accountInfo) {
+    public void withdrawMoney(@Valid @RequestBody AccountInfo accountInfo) {
         Account currentAccount = accountService.findByNumber(accountInfo.getNumber()).orElseThrow(AccountNotFoundException::new);
         substructAmount(currentAccount, accountInfo.getAmount());
         accountService.save(currentAccount);
     }
 
     @PostMapping("/transaction")
-    public void transactionMoney(@RequestBody TransactionMoney transactionMoney) {
+    public void transactionMoney(@Valid @RequestBody TransactionMoney transactionMoney) {
         Account from = accountService.findByNumber(transactionMoney.getFrom()).orElseThrow(AccountNotFoundException::new);
         Account to = accountService.findByNumber(transactionMoney.getTo()).orElseThrow(AccountNotFoundException::new);
 

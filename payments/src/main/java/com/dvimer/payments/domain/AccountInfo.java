@@ -6,10 +6,10 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 public class AccountInfo {
-    @NotNull
-    @Min(0)
+    @NotNull(message = "The amount must be")
+    @Min(message = "The amount must be greater than 0", value = 0)
     private BigDecimal amount;
-    @NotNull
+    @NotNull(message = "The number must be")
     private Long number;
 
     public AccountInfo() {
