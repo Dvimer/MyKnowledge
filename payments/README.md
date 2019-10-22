@@ -16,21 +16,25 @@
 Rest Api
 
 http://localhost/account/list GET - получить список аккаунтов
+
 http://localhost/account POST - сохранить аккаунт пример: 
 {
     "amount": 200,
     "number": 23
 }
+
 http://localhost/account/add PUT - Добавит к счету сумму пример:
 {
     "amount": 10,
     "number": 22
 }
+
 http://localhost/account/withdraw PUT - Вычесть сумму из счета пример:
 {
     "amount": 10,
     "number": 22
 }
+
 http://localhost/account/transaction POST - Перевести с одного счета на другой пример:
 {
     "from": 22,
