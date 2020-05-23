@@ -3,7 +3,6 @@ package ru.dvimer.spring5learn.domain;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Objects;
 import java.util.Set;
 
 
@@ -23,6 +22,8 @@ public class Book {
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
     @Singular
     private Set<Author> authors;
+    @ManyToOne
+    private Publisher publisher;
 
     public Book(String title, String isbn) {
         this.title = title;

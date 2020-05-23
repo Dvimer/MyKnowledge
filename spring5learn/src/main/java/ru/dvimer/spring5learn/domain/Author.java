@@ -3,7 +3,6 @@ package ru.dvimer.spring5learn.domain;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Objects;
 import java.util.Set;
 
 @Getter
