@@ -11,6 +11,7 @@
     <modules>
         <module>design.patterns</module>
         <module>algorithm</module>
+        <module>firebase</module>
     </modules>
 
 
