@@ -12,6 +12,7 @@
         <module>design.patterns</module>
         <module>algorithm</module>
         <module>firebase</module>
+        <module>petclinic</module>
     </modules>
 
 
