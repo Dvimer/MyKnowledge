@@ -1,6 +1,7 @@
 package guru.springframework.sfgpetclinic.bootstrap;
 
 import guru.springframework.sfgpetclinic.model.Owner;
+import guru.springframework.sfgpetclinic.model.Vet;
 import guru.springframework.sfgpetclinic.services.OwnerService;
 import guru.springframework.sfgpetclinic.services.PetService;
 import guru.springframework.sfgpetclinic.services.VetService;
@@ -17,13 +18,17 @@ public class DataLoader implements CommandLineRunner {
 
 
     @Override
-    public void run(String... args) throws Exception {
-        ownerService.save(Owner.builder().id(1L).address("Moskow").city("Moo").telephone("423432").build());
-        ownerService.save(Owner.builder().id(2L).address("Prof street").city("Moo").telephone("423432").build());
-        ownerService.save(Owner.builder().id(3L).address("but stret").city("Moo").telephone("423432").build());
-        ownerService.save(Owner.builder().id(4L).address("der").city("Moo").telephone("423432").build());
-        ownerService.save(Owner.builder().id(5L).address("vvcx").city("Moo").telephone("423432").build());
-        ownerService.save(Owner.builder().id(6L).address("Military").city("Moo").telephone("423432").build());
+    public void run(String... args) {
+        ownerService.save(Owner.builder().address("Moskow").city("Moo").telephone("423432").build());
+        ownerService.save(Owner.builder().address("Prof street").city("Moo").telephone("423432").build());
+        ownerService.save(Owner.builder().address("but stret").city("Moo").telephone("423432").build());
+        ownerService.save(Owner.builder().address("der").city("Moo").telephone("423432").build());
+        ownerService.save(Owner.builder().address("vvcx").city("Moo").telephone("423432").build());
+        ownerService.save(Owner.builder().address("Military").city("Moo").telephone("423432").build());
         ownerService.findAll().forEach(p -> System.out.println(p.getAddress()));
+        Vet vet = new Vet();
+        vet.setFirstName("First");
+        vet.setLastName("Last");
+        vetService.save(vet);
     }
 }
