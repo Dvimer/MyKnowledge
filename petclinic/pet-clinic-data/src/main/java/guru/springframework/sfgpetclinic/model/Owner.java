@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.Singular;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -42,6 +43,7 @@ public class Owner extends Person {
     private String telephone;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    @Singular
     private Set<Pet> pets = new HashSet<>();
 
 

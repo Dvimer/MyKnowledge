@@ -17,6 +17,14 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="carrierprogrammist" target="1.5" />
+      <module name="spring5-di.main" target="11" />
+      <module name="spring5-di.pet-clinic-data.main" target="11" />
+      <module name="spring5-di.pet-clinic-data.test" target="11" />
+      <module name="spring5-di.pet-clinic-web.main" target="11" />
+      <module name="spring5-di.pet-clinic-web.test" target="11" />
+      <module name="spring5-di.test" target="11" />
+      <module name="spring5learn.main" target="11" />
+      <module name="spring5learn.test" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
