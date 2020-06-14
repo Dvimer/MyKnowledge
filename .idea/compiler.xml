@@ -12,6 +12,7 @@
         <module name="pet-clinic-web" />
         <module name="firebase" />
         <module name="pet-clinic-data" />
+        <module name="spring5-recipe-app" />
         <module name="ru.dvimer" />
       </profile>
     </annotationProcessing>
@@ -32,6 +33,7 @@
       <module name="payments" options="-parameters" />
       <module name="pet-clinic-data" options="-parameters" />
       <module name="pet-clinic-web" options="-parameters" />
+      <module name="spring5-recipe-app" options="-parameters" />
     </option>
   </component>
 </project>
