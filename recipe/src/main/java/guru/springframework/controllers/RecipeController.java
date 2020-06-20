@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by jt on 6/19/17.
  */
 @Controller
+@RequestMapping("recipe/")
 public class RecipeController {
 
     private final RecipeService recipeService;
@@ -21,24 +22,30 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
-    @RequestMapping("/recipe/show/{id}")
-    public String showById(@PathVariable String id, Model model){
+    @RequestMapping("{id}/show")
+    public String showById(@PathVariable String id, Model model) {
 
         model.addAttribute("recipe", recipeService.findById(Long.valueOf(id)));
         return "recipe/show";
     }
 
-    @RequestMapping("recipe/new")
-    public String newRecipe(Model model){
+    @RequestMapping("new")
+    public String newRecipe(Model model) {
         model.addAttribute("recipe", new RecipeCommand());
 
         return "recipe/recipeform";
     }
 
-    @PostMapping("recipe")
-    public String saveOrUpdate(@ModelAttribute RecipeCommand command){
-        RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
+    @RequestMapping("{id}/update")
+    public String newRecipe(@PathVariable String id, Model model) {
 
-        return "redirect:/recipe/show/" + savedCommand.getId();
+        model.addAttribute("recipe", recipeService.findCommandById(Long.valueOf(id)));
+        return "recipe/recipeform";
+    }
+
+    @PostMapping
+    public String saveOrUpdate(@ModelAttribute RecipeCommand command) {
+        RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
+        return "redirect:/recipe/" + savedCommand.getId() + "/show";
     }
 }
