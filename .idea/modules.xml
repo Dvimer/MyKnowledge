@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/algorithm/algorithm.iml" filepath="$PROJECT_DIR$/algorithm/algorithm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/catalizator/catalizator.iml" filepath="$PROJECT_DIR$/catalizator/catalizator.iml" />
     </modules>
   </component>
 </project>
