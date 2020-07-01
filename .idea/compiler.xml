@@ -8,16 +8,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="design.patterns" />
+        <module name="ru.dvimer" />
         <module name="payments" />
         <module name="pet-clinic-web" />
         <module name="firebase" />
         <module name="pet-clinic-data" />
         <module name="spring5-recipe-app" />
-        <module name="ru.dvimer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="carrierprogrammist" target="1.5" />
+      <module name="catalizator" target="1.5" />
       <module name="spring5-di.main" target="11" />
       <module name="spring5-di.pet-clinic-data.main" target="11" />
       <module name="spring5-di.pet-clinic-data.test" target="11" />
