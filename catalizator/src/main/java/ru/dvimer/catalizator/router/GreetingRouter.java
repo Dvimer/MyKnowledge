@@ -3,13 +3,14 @@ package ru.dvimer.catalizator.router;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
-import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.RequestPredicate;
 import org.springframework.web.reactive.function.server.RequestPredicates;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import ru.dvimer.catalizator.handler.GreetingHandler;
+
+import java.util.Map;
 
 @Configuration
 public class GreetingRouter {
@@ -22,11 +23,8 @@ public class GreetingRouter {
 
         return RouterFunctions
                 .route(route, greetingHandler::hello)
-                .andRoute(RequestPredicates.GET("/"), serverRequest -> {
-                    return ServerResponse
-                            .ok()
-                            .contentType(MediaType.TEXT_PLAIN)
-                            .body(BodyInserters.fromValue("Main, page!"));
-                });
+                .andRoute(RequestPredicates.GET("/"), serverRequest -> ServerResponse
+                        .ok()
+                        .render("index", Map.of("user", serverRequest.queryParam("user").orElse(""))));
     }
 }
