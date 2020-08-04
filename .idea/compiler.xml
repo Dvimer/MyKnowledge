@@ -8,12 +8,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="design.patterns" />
-        <module name="ru.dvimer" />
         <module name="payments" />
         <module name="pet-clinic-web" />
         <module name="firebase" />
         <module name="pet-clinic-data" />
         <module name="spring5-recipe-app" />
+        <module name="ru.dvimer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
