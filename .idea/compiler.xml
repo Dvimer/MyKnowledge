@@ -18,6 +18,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="carrierprogrammist" target="1.5" />
+      <module name="reactor.main" target="11" />
+      <module name="reactor.test" target="11" />
       <module name="spring5-di.main" target="11" />
       <module name="spring5-di.pet-clinic-data.main" target="11" />
       <module name="spring5-di.pet-clinic-data.test" target="11" />

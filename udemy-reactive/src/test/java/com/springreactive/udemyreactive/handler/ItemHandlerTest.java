@@ -1,4 +1,4 @@
-package com.springreactive.udemyreactive.controller.v1;
+package com.springreactive.udemyreactive.handler;
 
 import com.springreactive.udemyreactive.constants.ItemConstants;
 import com.springreactive.udemyreactive.document.Item;
@@ -16,7 +16,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import java.util.Arrays;
@@ -30,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @AutoConfigureWebTestClient
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ActiveProfiles("test")
-class ItemControllerTest {
+class ItemHandlerTest {
     @Autowired
     WebTestClient webTestClient;
     @Autowired
@@ -55,7 +54,7 @@ class ItemControllerTest {
     @Test
     void getAllItems() {
         webTestClient.get()
-                .uri(ItemConstants.ITEM_END_POINT)
+                .uri(ItemConstants.ITEM_FUNCTIONAL_END_POINT)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
@@ -66,7 +65,7 @@ class ItemControllerTest {
     @Test
     void getAllItems_approach2() {
         webTestClient.get()
-                .uri(ItemConstants.ITEM_END_POINT)
+                .uri(ItemConstants.ITEM_FUNCTIONAL_END_POINT)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
@@ -84,7 +83,7 @@ class ItemControllerTest {
     @Test
     void getAllItems_approach3() {
         Flux<Item> responseBody = webTestClient.get()
-                .uri(ItemConstants.ITEM_END_POINT)
+                .uri(ItemConstants.ITEM_FUNCTIONAL_END_POINT)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
@@ -97,70 +96,4 @@ class ItemControllerTest {
                 .verifyComplete();
     }
 
-    @Test
-    void getItemById() {
-        webTestClient.get()
-                .uri(ItemConstants.ITEM_END_POINT.concat("/{id}"), "ABC")
-                .exchange()
-                .expectStatus().isOk()
-                .expectBody()
-                .jsonPath("$.price", 123.55);
-    }
-
-    @Test
-    void getItemById_notFound() {
-        webTestClient.get()
-                .uri(ItemConstants.ITEM_END_POINT.concat("/{id}"), "1221")
-                .exchange()
-                .expectStatus().isNotFound();
-    }
-
-    @Test
-    void createItem() {
-        Item melee = Item.builder().description("Melee").price(43.30).build();
-        webTestClient.post().uri(ItemConstants.ITEM_END_POINT)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(Mono.just(melee), Item.class)
-                .exchange()
-                .expectStatus().isCreated()
-                .expectBody()
-                .jsonPath("$.id").isNotEmpty()
-                .jsonPath("$.description").isEqualTo("Melee")
-                .jsonPath("$.price").isEqualTo(43.30);
-    }
-
-    @Test
-    void deleteItem() {
-        webTestClient.delete().uri(ItemConstants.ITEM_END_POINT.concat("/{id}"), "ABC")
-                .accept(MediaType.APPLICATION_JSON)
-                .exchange()
-                .expectStatus().isNoContent()
-                .expectBody(Void.class);
-    }
-
-    @Test
-    void updateItem() {
-        Item melee = Item.builder().description("Lenovo").price(2222.22).build();
-        webTestClient.put().uri(ItemConstants.ITEM_END_POINT.concat("/{id}"), "ABC")
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .body(Mono.just(melee), Item.class)
-                .exchange()
-                .expectStatus().isOk()
-                .expectBody()
-                .jsonPath("$.id").isEqualTo("ABC")
-                .jsonPath("$.description").isEqualTo("Lenovo")
-                .jsonPath("$.price").isEqualTo(2222.22);
-    }
-
-    @Test
-    void updateItem_notFound() {
-        Item melee = Item.builder().description("Lenovo").price(2222.22).build();
-        webTestClient.put().uri(ItemConstants.ITEM_END_POINT.concat("/{id}"), "DFE")
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .body(Mono.just(melee), Item.class)
-                .exchange()
-                .expectStatus().isNotFound();
-    }
 }

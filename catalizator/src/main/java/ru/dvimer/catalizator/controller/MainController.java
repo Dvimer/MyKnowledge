@@ -12,6 +12,8 @@ import reactor.core.publisher.Mono;
 import ru.dvimer.catalizator.domain.Message;
 import ru.dvimer.catalizator.service.MessageService;
 
+import java.time.Duration;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/controller")
@@ -25,8 +27,21 @@ public class MainController {
                 .take(count);
     }
 
+
+    @GetMapping("/log")
+    public Mono<Void> startLog() {
+        messageService.getMessages()
+                .delayElements(Duration.ofMillis(1000))
+                .doOnNext(System.out::println)
+                .doOnNext(System.out::println)
+                .doOnNext(System.out::println)
+                .subscribe();
+        return Mono.empty();
+    }
+
     @PostMapping
     public Mono<Message> createMessage(@RequestBody Message message) {
-        return messageService.create(message);
+        return messageService.create(message).log();
     }
+
 }
